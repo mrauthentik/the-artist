@@ -54,6 +54,22 @@ const projects = [
     tags: ['Flyer Design', 'Brand Identity'],
     src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/favour_ranger_work-5-i6vZZjilw5HaEmQc1harFFue9IiTJj.jpg',
   },
+  {
+    id: '06',
+    title: 'Tastycart Delivery Promo',
+    category: 'Social Media',
+    year: '2026',
+    tags: ['Brand Campaign', 'Social Media'],
+    src: 'https://www.image2url.com/r2/default/files/1783359475001-cb1bc173-cd7c-4e4f-9271-f0730c2b4f4f.jpeg',
+  },
+  {
+    id: '07',
+    title: 'Tastycart App Launch',
+    category: 'Brand Identity',
+    year: '2026',
+    tags: ['App Promo', 'Flyer Design'],
+    src: 'https://www.image2url.com/r2/default/files/1783359524477-b940dacc-7410-4a58-98c4-419a2a92a080.jpeg',
+  },
 ];
 
 const services = [
@@ -361,7 +377,7 @@ export default function Page() {
 
             {/* Row 2: three equal */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {projects.slice(2).map((project, i) => (
+              {projects.slice(2, 5).map((project, i) => (
                 <AnimateOnScroll key={project.id} animation="slide-up" delay={i * 100}>
                   <div className="project-card group" style={{ height: '380px' }}>
                     <Image
@@ -406,6 +422,105 @@ export default function Page() {
                 </AnimateOnScroll>
               ))}
             </div>
+
+            {/* Row 3: small left + large right (mirror of Row 1) */}
+            {projects.length > 5 && (
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <AnimateOnScroll animation="slide-up" className="lg:col-span-2">
+                  <div className="project-card group" style={{ height: '520px' }}>
+                    <Image
+                      src={projects[5].src}
+                      alt={projects[5].title}
+                      fill
+                      className="card-image"
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                    />
+                    <div className="card-overlay" />
+                    <div className="card-info">
+                      <span
+                        className="text-warm-gold block mb-2"
+                        style={{ fontFamily: 'var(--font-black-ops)', fontSize: '2rem' }}
+                      >
+                        {projects[5].id}
+                      </span>
+                      <h3
+                        className="text-cream font-black uppercase"
+                        style={{
+                          fontFamily: 'var(--font-bricolage)',
+                          fontSize: '1.3rem',
+                          letterSpacing: '-0.01em',
+                        }}
+                      >
+                        {projects[5].title}
+                      </h3>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
+
+                <AnimateOnScroll animation="slide-up" delay={120} className="lg:col-span-3">
+                  <div className="project-card group" style={{ height: '520px' }}>
+                    <Image
+                      src={projects[6].src}
+                      alt={projects[6].title}
+                      fill
+                      className="card-image"
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                    <div className="card-overlay" />
+                    <div className="card-info">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <span
+                            className="text-warm-gold block mb-2"
+                            style={{ fontFamily: 'var(--font-black-ops)', fontSize: '2.5rem' }}
+                          >
+                            {projects[6].id}
+                          </span>
+                          <h3
+                            className="text-cream font-black uppercase"
+                            style={{
+                              fontFamily: 'var(--font-bricolage)',
+                              fontSize: '1.6rem',
+                              letterSpacing: '-0.01em',
+                            }}
+                          >
+                            {projects[6].title}
+                          </h3>
+                          <div className="flex gap-2 mt-2 flex-wrap">
+                            {projects[6].tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="text-cream-dim border border-cream/20 rounded-full px-3 py-1"
+                                style={{
+                                  fontFamily: 'var(--font-syne)',
+                                  fontSize: '0.6rem',
+                                  letterSpacing: '0.2em',
+                                  textTransform: 'uppercase',
+                                }}
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <span
+                          className="text-cream-dim"
+                          style={{
+                            fontFamily: 'var(--font-syne)',
+                            fontSize: '0.65rem',
+                            letterSpacing: '0.2em',
+                          }}
+                        >
+                          {projects[6].year}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
+              </div>
+            )}
           </div>
         </div>
       </section>
